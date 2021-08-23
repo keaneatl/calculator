@@ -1,0 +1,141 @@
+/* variables */
+:root{
+    --headings: 
+}
+
+/* base styles */
+body{
+    font-size: 16px;
+}
+
+.container{
+    background-image: url(../images/bodybg.png);
+    background-size:inherit;
+    background-position: 50%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+bottom: 0;
+}
+
+.activebtn {
+    background-color: #3b3b39;
+    transform: scale(0.93);
+}
+
+.calc-numbtn, .calc-operator, .calc-clearbtn{
+    transition: all 0.06s;
+    cursor: pointer;
+}
+
+/* fonts */
+@font-face {
+    font-family: digital;
+    src: url('../fonts/digital-7.ttf');
+}
+
+@font-face {
+    font-family: jumper;
+    src: url('../fonts/JumperPERSONALUSEONLY-Bold.ttf');
+}
+
+@font-face {
+    font-family: ComputerAid;
+    src: url('../fonts/ComputerAidLightDker.ttf');
+}
+
+.heading, .footer{
+    font-family: ComputerAid;
+    font-size: 1.3em;
+    color: white;
+    text-shadow: 0px 0px 5px #ffffff
+}
+
+.calc-numbtn, .calc-operator, .calc-clearbtn{
+    font-size: 1.8em;
+}
+
+/* mobile styles */
+.heading{
+    align-self: flex-start;
+}
+
+.container{
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-container{
+    background-color:#CBC9D6;
+    border-radius: 18px;
+    margin: 10px 0;
+    padding:2px;
+    height: 490px;
+    width: 300px;
+    overflow-x: hidden;
+}
+
+.calc-display-container{
+    display: flex;
+    align-items: center;
+    border-radius: 18px;
+    height: 30%;
+    background-color: #3C4145;
+    overflow-x: hidden;
+}
+   
+.calc-display{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    align-items: center;
+    border-radius: 5px;
+    margin: 0 auto;
+    height: 50%;
+    width: 70%;
+    background-color: #A2B09F;
+    overflow-x: hidden;
+}
+
+
+.calc-btns-container{
+    display: grid;
+    grid-template-columns: 25% 25% 25% ;
+    grid-gap: 15px;
+    margin: 6% 0 0 10%;
+}
+
+.calc-numbtn, .calc-clearbtn {
+    background-color: #161513;
+    color: #D6E0E0;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.calc-operator{
+    padding: 5px 0;
+    background-color: #161513;
+    color: #D6E0E0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* small tablet styles */
+@media screen and (min-width: 620px){
+
+}
+
+/* large tablet styles */
+@media screen and (min-width: 960px){
+
+}
+
+/* desktop styles */
+@media screen and (min-width: 1200px){
+
+}
