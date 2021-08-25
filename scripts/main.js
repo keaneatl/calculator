@@ -15,7 +15,11 @@
         })
         return finalSum
     }
-      
+    
+    const divide = function(firstNum, secondNum){
+      let quotient = firstNum / secondNum;
+      return quotient;
+    }
     
     const multiply = function(nums) {
         let finalProduct = 1;
@@ -38,15 +42,15 @@
         result = add(firstNum, secondNum);
         break;
 
-        case subtract:
+        case 'subtract':
         result = subtract(firstNum, secondNum);
         break;
 
-        case divide:
+        case 'divide':
         result = divide(firstNum, secondNum);
         break;
 
-        case multiply:
+        case 'multiply':
         result = simpleMultiply(firstNum, secondNum)
         break;
       }
@@ -79,26 +83,71 @@
   })
 
   clearBtn.addEventListener('transitionend', removeTransition)
-  clearBtn.addEventListener('click', () => clearBtn.classList.add('activebtn'))
-  clearBtn.addEventListener('click', () => calcDisplay.textContent = 0);
+  clearBtn.addEventListener('click', () => {
+    clearBtn.classList.add('activebtn')
+    calcDisplay.textContent = 0;
+    firstNum = '';
+    secondNum = '';
+    operation = '';
+  })
+  
   
   let firstNum = '';
   let secondNum = '';
   let operation = '';
-  let n1;
-  let n2;
   
-  // WORK ON THIS
+  // OPERATORS' EVENT LISTENERS
   const addBtn = document.querySelector('#add');
   addBtn.addEventListener('click', () => {
+    if (operation === 'active'){
+      calcDisplay.textContent = operate(operator, parseInt(firstNum), parseInt(secondNum))
+    }
+    else{
     operator = 'add';
+    operation = 'active';
+    calcDisplay.textContent = '0';
+    }
+  })
+
+  const subtractBtn = document.querySelector('#subtract');
+  subtractBtn.addEventListener('click', () => {
+    operator = 'subtract';
+    operation = 'active';
+    calcDisplay.textContent = '0';
+  })
+
+  const multiplyBtn = document.querySelector('#multiply');
+  multiplyBtn.addEventListener('click', () => {
+    operator = 'multiply';
+    operation = 'active';
+    calcDisplay.textContent = '0';
+  })
+
+  const divideBtn = document.querySelector('#divide');
+  divideBtn.addEventListener('click', () => {
+    operator = 'divide';
     operation = 'active';
     calcDisplay.textContent = '0';
   })
 
   const equalsBtn = document.querySelector('#operate');
   equalsBtn.addEventListener('click', () => {
-  operate(operator, firstNum, secondNum);
+
+    if (operation === '' || firstNum === '' || secondNum === ''){
+      alert('ERROR: Please Enter a first and second number, and choose an operator.')
+    }
+
+    else if (operator === 'divide' && secondNum === '0'){
+      alert('Syntax Error')
+      calcDisplay.textContent = 0;
+      firstNum = '';
+      secondNum = '';
+      operation = '';
+    }
+    else {
+    let result = operate(operator, parseInt(firstNum), parseInt(secondNum));
+    calcDisplay.textContent = result;
+    }
   })
 
 // WORK ON THIS
@@ -131,7 +180,8 @@ let addFirstNum = numberBtnsArr.forEach( btn => {
   })
 })
 
-
+// THINGS TO WORK ON
+// 
 
 // for (let i = 0; i < numberBtnsArr.length; i++){
 //   if (i === 0){
