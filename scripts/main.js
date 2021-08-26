@@ -95,11 +95,25 @@
   let firstNum = '';
   let secondNum = '';
   let operation = '';
+  let result = '';
   
   // OPERATORS' EVENT LISTENERS
   const addBtn = document.querySelector('#add');
   addBtn.addEventListener('click', () => {
-    if (operation === 'active'){
+    if (firstNum !== '' && secondNum !== ''){
+      result = operate(operator, parseInt(firstNum), parseInt(secondNum));
+      calcDisplay.textContent = `${result}`;
+      firstNum = '';
+      secondNum = '';
+    }
+
+    else if (firstNum !== '' && result !== ''){
+     result = operate(operator, parseInt(firstNum), result);
+     calcDisplay.textContent = result;
+     firstNum = '';
+    }
+
+    else if (operation === 'active'){
       calcDisplay.textContent = operate(operator, parseInt(firstNum), parseInt(secondNum))
     }
     else{
@@ -144,9 +158,13 @@
       secondNum = '';
       operation = '';
     }
+
     else {
-    let result = operate(operator, parseInt(firstNum), parseInt(secondNum));
-    calcDisplay.textContent = result;
+    result = operate(operator, parseInt(firstNum), parseInt(secondNum));
+    calcDisplay.textContent = `${result}`;
+    operation = '';
+    firstNum = '';
+    secondNum = '';
     }
   })
 
@@ -157,6 +175,25 @@ let addFirstNum = numberBtnsArr.forEach( btn => {
     if (operation === 'active' && calcDisplay.textContent === '0'){
       calcDisplay.textContent = btn.textContent;
       secondNum += btn.textContent;
+      btn.classList.add('activebtn')
+    }
+
+    else if (result !== '' && operation === 'active'){
+      calcDisplay.textContent = btn.textContent;
+      firstNum += btn.textContent;
+      btn.classList.add('activebtn')
+    }
+
+    else if (result !== '' && operation === 'active' && calcDisplay.textContent.length >= 1){
+      calcDisplay.append(btn.textContent);
+      firstNum += btn.textContent;
+      btn.classList.add('activebtn')
+    }
+
+    else if (result !== ''){
+      calcDisplay.textContent = btn.textContent;
+      result = '';
+      firstNum += btn.textContent;
       btn.classList.add('activebtn')
     }
 
@@ -179,6 +216,7 @@ let addFirstNum = numberBtnsArr.forEach( btn => {
     }
   })
 })
+
 
 // THINGS TO WORK ON
 // 
