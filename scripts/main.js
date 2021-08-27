@@ -62,12 +62,11 @@
       this.classList.remove('activebtn');
     }
 
-  
-  
-
   const calcDisplay = document.querySelector('.calc-display');
   
   const numberBtns = document.querySelectorAll('.calc-numbtn');
+
+  const decimalBtn = document.querySelector('#decimal');
 
   const clearBtn = document.querySelector('.calc-clearbtn');
 
@@ -82,6 +81,13 @@
     btn.addEventListener('click', () => btn.classList.add('activebtn'))
   })
 
+  decimalBtn.addEventListener('click', () => {
+    let displayArr = Array.from(calcDisplay.textContent);
+    if (displayArr.includes('.')){
+      alert('There is already a decimal');
+    }
+  })
+
   clearBtn.addEventListener('transitionend', removeTransition)
   clearBtn.addEventListener('click', () => {
     clearBtn.classList.add('activebtn')
@@ -89,6 +95,8 @@
     firstNum = '';
     secondNum = '';
     operation = '';
+    result = '';
+    operator = '';
   })
   
   
@@ -96,52 +104,83 @@
   let secondNum = '';
   let operation = '';
   let result = '';
+  let operator = '';
   
   // OPERATORS' EVENT LISTENERS
   const addBtn = document.querySelector('#add');
   addBtn.addEventListener('click', () => {
     if (firstNum !== '' && secondNum !== ''){
-      result = operate(operator, parseInt(firstNum), parseInt(secondNum));
-      calcDisplay.textContent = `${result}`;
-      firstNum = '';
+      firstNum = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+      calcDisplay.textContent = firstNum;
       secondNum = '';
-    }
-
-    else if (firstNum !== '' && result !== ''){
-     result = operate(operator, parseInt(firstNum), result);
-     calcDisplay.textContent = result;
-     firstNum = '';
+      operator = 'add';
     }
 
     else if (operation === 'active'){
-      calcDisplay.textContent = operate(operator, parseInt(firstNum), parseInt(secondNum))
+      calcDisplay.textContent = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+      operator = 'add';
     }
     else{
     operator = 'add';
     operation = 'active';
-    calcDisplay.textContent = '0';
     }
   })
 
   const subtractBtn = document.querySelector('#subtract');
   subtractBtn.addEventListener('click', () => {
+    if (firstNum !== '' && secondNum !== ''){
+      firstNum = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+      calcDisplay.textContent = firstNum;
+      secondNum = '';
+      operator = 'subtract';
+    }
+
+    else if (operation === 'active'){
+      calcDisplay.textContent = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+      operator = 'subtract';
+    }
+    else{
     operator = 'subtract';
     operation = 'active';
-    calcDisplay.textContent = '0';
+    }
   })
 
   const multiplyBtn = document.querySelector('#multiply');
   multiplyBtn.addEventListener('click', () => {
+    if (firstNum !== '' && secondNum !== ''){
+      firstNum = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+      calcDisplay.textContent = firstNum;
+      secondNum = '';
+      operator = 'multiply';
+    }
+
+    else if (operation === 'active'){
+      calcDisplay.textContent = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+      operator = 'multiply';
+    }
+    else{
     operator = 'multiply';
     operation = 'active';
-    calcDisplay.textContent = '0';
+    }
   })
 
   const divideBtn = document.querySelector('#divide');
   divideBtn.addEventListener('click', () => {
+    if (firstNum !== '' && secondNum !== ''){
+      firstNum = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+      calcDisplay.textContent = firstNum;
+      secondNum = '';
+      operator = 'divide';
+    }
+
+    else if (operation === 'active'){
+      calcDisplay.textContent = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+      operator = 'divide';
+    }
+    else{
     operator = 'divide';
     operation = 'active';
-    calcDisplay.textContent = '0';
+    }
   })
 
   const equalsBtn = document.querySelector('#operate');
@@ -160,11 +199,11 @@
     }
 
     else {
-    result = operate(operator, parseInt(firstNum), parseInt(secondNum));
-    calcDisplay.textContent = `${result}`;
-    operation = '';
-    firstNum = '';
+    firstNum = operate(operator, parseFloat(firstNum), parseFloat(secondNum));
+    calcDisplay.textContent = `${firstNum}`;
     secondNum = '';
+    operation = '';
+    result = '';
     }
   })
 
@@ -172,38 +211,28 @@
 let addFirstNum = numberBtnsArr.forEach( btn => {
   btn.addEventListener('transitionend', removeTransition)
   btn.addEventListener('click', () => {
-    if (operation === 'active' && calcDisplay.textContent === '0'){
+
+    if (firstNum !== '' && operation === 'active' && secondNum === ''){
       calcDisplay.textContent = btn.textContent;
       secondNum += btn.textContent;
       btn.classList.add('activebtn')
     }
 
-    else if (result !== '' && operation === 'active'){
-      calcDisplay.textContent = btn.textContent;
-      firstNum += btn.textContent;
-      btn.classList.add('activebtn')
-    }
-
-    else if (result !== '' && operation === 'active' && calcDisplay.textContent.length >= 1){
+    else if (firstNum !== '' && operation === 'active'){
       calcDisplay.append(btn.textContent);
-      firstNum += btn.textContent;
+      secondNum += btn.textContent;
       btn.classList.add('activebtn')
     }
 
-    else if (result !== ''){
+    else if (operation === '' && secondNum === '' && operator !== ''){
+      firstNum = '';
       calcDisplay.textContent = btn.textContent;
-      result = '';
       firstNum += btn.textContent;
+      operator = '';
       btn.classList.add('activebtn')
     }
 
-    else if (operation === 'active'){
-    calcDisplay.append(btn.textContent);
-    secondNum += btn.textContent;
-    btn.classList.add('activebtn')
-    }
-
-    else if (calcDisplay.textContent === '0'){
+    else if (firstNum === ''){
         calcDisplay.textContent = btn.textContent;
         firstNum =+ btn.textContent;
         btn.classList.add('activebtn')
@@ -216,24 +245,3 @@ let addFirstNum = numberBtnsArr.forEach( btn => {
     }
   })
 })
-
-
-// THINGS TO WORK ON
-// 
-
-// for (let i = 0; i < numberBtnsArr.length; i++){
-//   if (i === 0){
-//     item.addEventListener('click', () => {
-//     calcDisplay.textContent = `${item.textContent}`;
-//     })
-//   }
-
-//   else {
-//     item.addEventListener('click', () => {
-//     calcDisplay.append(item.textContent)
-//     })
-//   }
-// }
-
-
-  
