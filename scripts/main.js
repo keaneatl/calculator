@@ -84,7 +84,7 @@
   decimalBtn.addEventListener('click', () => {
     let displayArr = Array.from(calcDisplay.textContent);
     if (displayArr.includes('.')){
-      alert('There is already a decimal');
+      alert('Warning: you have already added another decimal, press AC')
     }
   })
 
@@ -208,10 +208,9 @@
   })
 
 // WORK ON THIS
-let addFirstNum = numberBtnsArr.forEach( btn => {
+let displayNum = numberBtnsArr.forEach( btn => {
   btn.addEventListener('transitionend', removeTransition)
   btn.addEventListener('click', () => {
-
     if (firstNum !== '' && operation === 'active' && secondNum === ''){
       calcDisplay.textContent = btn.textContent;
       secondNum += btn.textContent;
@@ -244,4 +243,6 @@ let addFirstNum = numberBtnsArr.forEach( btn => {
     btn.classList.add('activebtn')
     }
   })
+
+  
 })
