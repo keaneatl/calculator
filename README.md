@@ -1,7 +1,7 @@
 <p align="center">
   <h1 align="center">Calculator App</h1>
   <p align="center">
-    <strong>This was the final project for The Odin Project fundamentals,before choosing a path between JavaScript or Ruby-on-Rails. It is meant to demonstrate the skills and knowledge gained for HTML, CSS, and JavaScript fundamentals. Also, I ended up choosing the JavaScript path.</strong>
+    <strong>This was the final project for The Odin Project fundamentals, before choosing a path between JavaScript or Ruby-on-Rails. It is meant to demonstrate the skills and knowledge gained for HTML, CSS, and JavaScript fundamentals. Also, I ended up choosing the JavaScript path.</strong>
      <br /><br />
     <a href="https://keaneatl.github.io/calculator/" target="_blank"><strong>Live Preview »</strong></a>
     <br /><br />
