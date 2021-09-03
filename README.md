@@ -8,7 +8,7 @@
   </p>
 </p>
 
-<a href="https://keaneatl.github.io/calculator/" target="_blank"><img src="images/livepreview.png" alt="Calculator App Live Preview"></a>
+<a href="https://keaneatl.github.io/calculator/" target="_blank"><img src="/images/livepreview.png" alt="Calculator App Live Preview"></a>
 
 <h2 style="display: inline-block">Table of Contents</h2>
 <ol>
