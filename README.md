@@ -1,7 +1,7 @@
 <p align="center">
   <h1 align="center">Calculator App</h1>
   <p align="center">
-    <strong>This was the final project for The Odin Project fundamentals, before choosing a path between JavaScript or Ruby-on-Rails. It is meant to demonstrate the skills and knowledge gained for HTML, CSS, and JavaScript fundamentals. Also, I ended up choosing the JavaScript path.</strong>
+    <strong>This was the final project for The Odin Project fundamentals, before choosing a path between Full Stack JavaScript or Full Stack Ruby-on-Rails. It is meant to demonstrate the skills and knowledge gained for HTML, CSS, and JavaScript fundamentals. Also, I ended up choosing the Full Stack JavaScript path.</strong>
      <br /><br />
     <a href="https://keaneatl.github.io/calculator/" target="_blank"><strong>Live Preview »</strong></a>
     <br /><br />
@@ -40,7 +40,7 @@
 2. Making use of callback functions to use in Event Listeners for cleaner & more efficient code.
 
 ## Disclaimer
-The resources I used, specifically the logo photoshop template, custom fonts installed, backgrounds, pictures, and the svg icons are only utilized for personal use, and not otherwise. 
+The resources I used, specifically the custom fonts installed, backgrounds, pictures, and the svg icons are only utilized for personal use, and not otherwise. 
 
 ## Contact
 Keane Andre - @keaneatl (Instagram, Facebook, Twitter) - <a href="mailto:kyntltntn@protonmail.com">kyntltntn@protonmail.com</a>
