@@ -40,7 +40,7 @@
 2. Making use of callback functions to use in Event Listeners for cleaner & more efficient code.
 
 ## Disclaimer
-The resources I used, specifically the logo photoshop template, custom fonts installed, backgrounds, pictures, and the svg icons are only utilized for personal use, and not otherwise. 
+The resources I used, specifically the custom fonts installed, backgrounds, pictures, and the svg icons are only utilized for personal use, and not otherwise. 
 
 ## Contact
 Keane Andre - @keaneatl (Instagram, Facebook, Twitter) - <a href="mailto:kyntltntn@protonmail.com">kyntltntn@protonmail.com</a>
